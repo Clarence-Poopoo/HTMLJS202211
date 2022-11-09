@@ -6,22 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>?Riddles?</title>
     <link rel="stylesheet" href="style.css">
-    <style>
+    <style> 
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Roboto:wght@300&display=swap');
+        body{
+            font-family: 'Anton', sans-serif;
+        }
         h1{
         margin: auto;
         border: 5px solid black;
         padding: 10px;
         background-color: greenyellow;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        @font-face {
+            font-family: multipleranges;
+            src: url(fonts/MULTIPLE\ RANGES\ Regular.ttf);
+        }
+        body{
+            font-family: multipleranges;
         }
     </style>
 </head>
 <body>
     <h1>Welcome to the HTML JavaScript Class Riddles</h1>
     <ul>
-        <li><p>What was new, is new again. Rebirth. Restoration. Reformation.</p><br><p onclick="showAnswer('answer','Renewal')" id="answer">Answer</p></li>
-        <li><p>Fear he who hides behind one.<p><br><p  onclick="showAnswer('answer2','Mask')" id="answer2">Answer</p></li>
-        <li><p>I am first a fraud or a trick. Or perhaps a blend of the two. Thats up to your misinterpretation.<p><br><p>Confusion</p></li>
+        <li><p>What was new, is new again. Rebirth. Restoration. Reformation.</p></li>
+            <br>
+            <button id= btn onclick="showAnswer('answer','Renewal')">Click for Answer</button>
+            <span id="answer"></span> 
+        <li><p>Fear he who hides behind one.<p></li>
+            <br>
+            <button id=btn onclick="showAnswer('answer2','Mask')">Click for Answer</button> 
+            <span id="answer2"></span> 
+        <li><p>I am first a fraud or a trick. Or perhaps a blend of the two. Thats up to your misinterpretation.<p></li>
+            <br>
+            <button id=btn onclick="showAnswer('answer3','Confusion')">Click for Answer</button> 
+            <span id="answer3"></span> 
         <li><p>What does a liar do when he's dead?<p><br><p>He lies still.</p></li>
         <li><p>What time is it when an elephant sits on a fence?<p><br><p>Time to fix the fence.</p></li>
         <li><p>It can be cruel, poetic, or blind. But when its denied, its violence you may find.<p><br><p>Justice<p></li>
