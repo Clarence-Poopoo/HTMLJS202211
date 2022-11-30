@@ -12,10 +12,18 @@ var startFuel = randomNumber(canvas.width,600)
 var fuel = startFuel
 var fuelBarWidth = 300
 var gameOver = true
-
+var carWidth = 50
 var seconds = 3
 var fps = 60
 var frames = fps
+
+//load game sprites
+var carSprite = new Image()
+carSprite.src = "images/car.png"
+
+carSprite.onload = function(){
+    main()
+}
 
 //add some event listeners
 document.addEventListener("keydown",keyPressDown)
@@ -75,8 +83,8 @@ function drawStartFinish(){
 function drawCar(){
   //draw a car
   ctx.fillStyle = "red"
-  ctx.fillRect(carPos,canvas.height/2,40,20)
-
+  //ctx.fillRect(carPos,canvas.height/2,carWidth,20)
+    ctx.drawImage(carSprite,carPos,canvas.height/2,carWidth,20)
 }
 
 function drawFuelBar(){
@@ -92,7 +100,7 @@ function drawFuelBar(){
 }
 
 function drawResults(){
-    if(carPos +40> finish){
+    if(carPos + carWidth> finish){
         ctx.fillStyle = "black"
         ctx.font = "25px Arial"
         ctx.textAlign = 'center'
