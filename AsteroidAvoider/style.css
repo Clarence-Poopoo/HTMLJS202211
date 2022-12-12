@@ -1,0 +1,19 @@
+html,body{
+    display: flex;
+    justify-content: center;
+    background-color: purple;
+}
+canvas{
+    border: 1px solid blue;
+}
+#container{
+    background-color: blue;
+}
+header{
+    display: flex;
+    justify-content: center;
+}
+footer{
+    display: flex;
+    justify-content: center;
+}
