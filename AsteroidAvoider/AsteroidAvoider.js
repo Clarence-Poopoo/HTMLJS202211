@@ -91,10 +91,9 @@ function pressKeyUp(e) {
 //Asteroid Class
 function Asteroid() {
     //properties to draw the asteroid
-    this.radius = randomRange(15, 2);
-    this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width;
-    this.y = randomRange(canvas.height, 0);
-    //this.vy = randomRange(10, 5);
+    this.radius = randomRange(15, 2)
+    this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width
+    this.y = randomRange(canvas.height, 0)
     this.vx = randomRange(-10,-5)
     this.color = "white"; 
 
