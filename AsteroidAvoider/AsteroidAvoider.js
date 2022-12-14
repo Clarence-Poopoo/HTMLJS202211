@@ -6,9 +6,12 @@ var score = 0
 var highScore = 0 
 var currentState = 0 
 var gameState = [] 
+var seconds = 3
+var fps = 60
+var frames = fps
 
 //asteroid variables
-var numAsteroids = 2 
+var numAsteroids = 20 
 var asteroids = [] 
 
 //Player Ship variables
@@ -25,7 +28,7 @@ function pressKeyDown(e) {
             if(currentState == 2){
                 //game over inputs
                 currentState = 0 
-                numAsteroids = 2 
+                numAsteroids = 20 
                 asteroids = [] 
                 score = 0 
                 //start game here
@@ -93,8 +96,8 @@ function Asteroid() {
     //properties to draw the asteroid
     this.radius = randomRange(15, 2)
     this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width
-    this.y = randomRange(canvas.height, 0)
-    this.vx = randomRange(-5,-2)
+    this.y = randomRange(canvas.height - this.radius, this.radius)
+    this.vx = randomRange(10,5)
     this.color = "white"; 
 
     //methods (functions) to draw asteroid
@@ -207,11 +210,16 @@ function main() {
 }
 
 //Game State Machine
-
+var menu = new Image
+menu.src= "images/milkyway.jpg"
+menu.onload = function(){
+    main()
+}
 //Main Menu State
 gameState[0] = function(){
     //code for main menu
-    ctx.save()  
+    ctx.save()
+    ctx.drawImage(menu,0,0, canvas.width, canvas.height, )
     ctx.font = "30px Arial"  
     ctx.fillStyle = "white"  
     ctx.textAlign = "center"  
@@ -265,12 +273,12 @@ gameState[1] = function(){
             return  
         }
 
-        if (asteroids[i].y > canvas.height + asteroids[i].radius) {
-            asteroids[i].y = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius)  - canvas.height
-            asteroids[i].x = randomRange(canvas.width - asteroids[i].radius, asteroids[i].radius) 
+        if (asteroids[i].x < asteroids[i].radius) {
+            asteroids[i].y = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius)  
+            asteroids[i].x = randomRange(canvas.width - asteroids[i].radius, asteroids[i].radius) + canvas.width
         }
 
-        asteroids[i].x += asteroids[i].vx  
+        asteroids[i].x -= asteroids[i].vx  
         asteroids[i].drawAsteroid()  
     }
 
@@ -346,4 +354,5 @@ function scoreTimer(){
         //calls scoreTimer every second
         setTimeout(scoreTimer, 1000)  
     }
+    
 }

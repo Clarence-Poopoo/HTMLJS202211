@@ -1,8 +1,9 @@
 html,body{
     display: flex;
     justify-content: center;
-    background-color: purple;
+    background-image: url(images/space.jpg);
 }
+
 canvas{
     border: 1px solid blue;
 }
@@ -12,6 +13,7 @@ canvas{
 header{
     display: flex;
     justify-content: center;
+    font-family: Unbounded;
 }
 footer{
     display: flex;
