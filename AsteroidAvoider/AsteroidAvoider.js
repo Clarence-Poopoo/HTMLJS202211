@@ -8,7 +8,7 @@ var currentState = 0
 var gameState = [] 
 
 //asteroid variables
-var numAsteroids = 20 
+var numAsteroids = 2 
 var asteroids = [] 
 
 //Player Ship variables
@@ -25,7 +25,7 @@ function pressKeyDown(e) {
             if(currentState == 2){
                 //game over inputs
                 currentState = 0 
-                numAsteroids = 20 
+                numAsteroids = 2 
                 asteroids = [] 
                 score = 0 
                 //start game here
@@ -94,7 +94,7 @@ function Asteroid() {
     this.radius = randomRange(15, 2)
     this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width
     this.y = randomRange(canvas.height, 0)
-    this.vx = randomRange(-10,-5)
+    this.vx = randomRange(-5,-2)
     this.color = "white"; 
 
     //methods (functions) to draw asteroid
@@ -266,8 +266,8 @@ gameState[1] = function(){
         }
 
         if (asteroids[i].y > canvas.height + asteroids[i].radius) {
-            asteroids[i].y = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius)   
-            asteroids[i].x = randomRange(canvas.width - asteroids[i].radius, asteroids[i].radius)  + canvas.width
+            asteroids[i].y = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius)  - canvas.height
+            asteroids[i].x = randomRange(canvas.width - asteroids[i].radius, asteroids[i].radius) 
         }
 
         asteroids[i].x += asteroids[i].vx  
