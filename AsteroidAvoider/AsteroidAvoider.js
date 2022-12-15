@@ -139,19 +139,19 @@ function PlayerShip() {
         //draw the thruster
         if(this.up || this.down || this.right){
             ctx.save()  
-            if(this.flameLength == 30){
-                this.flameLength = 20  
+            if(this.flameLength == -30){
+                this.flameLength = -20  
                 ctx.fillStyle = "yellow"  
             }else{
-                this.flameLength = 30  
+                this.flameLength = -30  
                 ctx.fillStyle = "orange"  
             }
             //draw the flame
             ctx.beginPath()  
-            ctx.moveTo(0, this.flameLength)  
-            ctx.lineTo(5, 5)  
-            ctx.lineTo(-5, 5)  
-            ctx.lineTo(0, this.flameLength)  
+            ctx.moveTo(this.flameLengthm, 20)  
+            ctx.lineTo(15, 15)  
+            ctx.lineTo(25, 25)  
+            ctx.lineTo(this.flameLength, 20)  
             ctx.closePath()  
             ctx.fill()  
             ctx.restore()  
