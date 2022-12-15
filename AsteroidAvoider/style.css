@@ -8,7 +8,7 @@ canvas{
     border: 1px solid blue;
 }
 #container{
-    background-color: blue;
+    background-color: gainsboro;
 }
 header{
     display: flex;

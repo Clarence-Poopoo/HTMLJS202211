@@ -6,12 +6,9 @@ var score = 0
 var highScore = 0 
 var currentState = 0 
 var gameState = [] 
-var seconds = 3
-var fps = 60
-var frames = fps
 
 //asteroid variables
-var numAsteroids = 20 
+var numAsteroids = 5 
 var asteroids = [] 
 
 //Player Ship variables
@@ -28,7 +25,7 @@ function pressKeyDown(e) {
             if(currentState == 2){
                 //game over inputs
                 currentState = 0 
-                numAsteroids = 20 
+                numAsteroids = 5 
                 asteroids = [] 
                 score = 0 
                 //start game here
@@ -92,31 +89,40 @@ function pressKeyUp(e) {
 }
 
 //Asteroid Class
+var asteroidSprite = new Image()
+asteroidSprite.src = "images/asteroid2.png"
+
+asteroidSprite.onload = function(){
+    main()
+}
 function Asteroid() {
     //properties to draw the asteroid
-    this.radius = randomRange(15, 2)
+    this.radius = randomRange(30, 10)
     this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width
     this.y = randomRange(canvas.height - this.radius, this.radius)
     this.vx = randomRange(10,5)
-    this.color = "white"; 
+    //this.color = "white"; 
 
     //methods (functions) to draw asteroid
     this.drawAsteroid = function () {
         ctx.save()  
         ctx.beginPath()  
-        ctx.fillStyle = this.color  
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true)  
-        ctx.closePath()  
-        ctx.fill()  
+        ctx.drawImage(asteroidSprite,this.x,this.y,this.radius,this.radius) 
         ctx.restore()  
     }
 }
+var player = PlayerShip()
+var playerSprite = new Image()
+playerSprite.src = "images/ship.png"
 
+playerSprite.onload = function(){
+    main()
+}
 function PlayerShip() {
     this.x = canvas.width / 2  
     this.y = canvas.height / 2  
-    this.width = 20  
-    this.height = 20  
+    this.width = -50  
+    this.height = 80  
     this.up = false  
     this.down = false  
     this.left = false  
@@ -126,8 +132,9 @@ function PlayerShip() {
     this.flameLength = 30  
 
     this.drawShip = function () {
-        ctx.save()  
-        ctx.translate(this.x, this.y)  
+        ctx.save();
+        ctx.drawImage(playerSprite,this.x,this.y,100, 40);
+        ctx.translate(this.x, this.y);
 
         //draw the thruster
         if(this.up || this.down || this.right){
@@ -151,14 +158,14 @@ function PlayerShip() {
         }
 
         //draw the ship
-        ctx.fillStyle = "red"  
+        //ctx.fillStyle = "gainsboro"  
         ctx.beginPath()  
-        ctx.moveTo(0, -10)  
-        ctx.lineTo(10, 10)  
-        ctx.lineTo(-10, 10)  
-        ctx.lineTo(0, -10)  
+        ctx.moveTo(90, 35)  
+        ctx.lineTo(29, 30)  
+        ctx.lineTo(29, 5)  
+        ctx.lineTo(100, 35)  
         ctx.closePath()  
-        ctx.fill()  
+        //ctx.fill()  
         ctx.restore()  
     }
 
@@ -174,15 +181,15 @@ function PlayerShip() {
         }
 
         //top boundary
-        if (this.y < this.height / 2) {
-            this.y = this.height / 2  
+        if (this.y < this.height - 90) {
+            this.y = this.height  - 90 
             this.vy = 0  
         }
 
 
         //right boundary
-        if (this.x > canvas.width - this.width / 2) {
-            this.x = canvas.width - this.width / 2  
+        if (this.x > canvas.width + this.width - 30 ) {
+            this.x = canvas.width + this.width - 30  
             this.vx = 0  
         }
 
@@ -211,7 +218,7 @@ function main() {
 
 //Game State Machine
 var menu = new Image
-menu.src= "images/milkyway.jpg"
+menu.src= "images/Menu.gif"
 menu.onload = function(){
     main()
 }
@@ -223,8 +230,8 @@ gameState[0] = function(){
     ctx.font = "30px Arial"  
     ctx.fillStyle = "white"  
     ctx.textAlign = "center"  
-    ctx.fillText("Asteroid Avoider", canvas.width/2, canvas.height/2 - 30)  
-    ctx.font = "15px Arial"  
+    //ctx.fillText("Asteroid Avoider", canvas.width/2, canvas.height/2 - 30)  
+    ctx.font = "30px Unbounded"  
     ctx.fillText("Press Space to Start", canvas.width/2, canvas.height/2 + 20)  
     ctx.restore()  
 }
@@ -293,12 +300,17 @@ gameState[1] = function(){
 
 }
 
+var GameOver = new Image
+GameOver.src= "images/Gameover.png"
+GameOver.onload = function(){
+    main()
+}
 //Game Over State
 gameState[2] = function(){
-    //code for game over menu
+    //code for game over menu 
+    ctx.drawImage(GameOver,0,0, canvas.width, canvas.height, )
     if(score > highScore){
         highScore = score  
-
         ctx.save()  
         ctx.font = "30px Arial"  
         ctx.fillStyle = "white"  
