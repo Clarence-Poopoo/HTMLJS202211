@@ -13,7 +13,7 @@ var player;
 	
 	//Instantiate the Player
 	player = new Player();
-	//player.vx = -7
+	player.vx = 7
 	
 	//Set the Animation Timer
 	timer = setInterval(animate, interval);
