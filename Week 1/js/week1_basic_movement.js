@@ -27,7 +27,7 @@ function animate()
 	player.move();
 	
 	//Collision
-	/*if(player.x < player.width/2)
+	if(player.x < player.width/2)
 	{
 		player.x = player.width/2
 		player.vx = -player.vx
@@ -37,7 +37,7 @@ function animate()
 	{
 		player.x = canvas.width - player.width/2
 		player.vx = -player.vx
-	}*/
+	}
 
 
 	//Update the Screen
