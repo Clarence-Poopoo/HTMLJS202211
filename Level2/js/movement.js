@@ -21,7 +21,6 @@ function animate()
 	{
 		console.log("Moving Up");
 		player1.y += -2;
-		
 	}
 	if(s)
 	{
@@ -40,5 +39,6 @@ function animate()
 
 	//Update the Screen
 	player1.draw();
+	ball.draw();
 }
 

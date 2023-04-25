@@ -9,7 +9,7 @@ function GameObject()
 	
 	//player's dimensions
 	this.width = 10;
-	this.height = 125;
+	this.height = 150;
 	
 	//player's velocity or speed on each axis
 	this.vx = 0;
