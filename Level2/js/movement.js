@@ -4,13 +4,12 @@ var timer;
 //1000 ms or 1 second / FPS
 var interval = 1000/60;
 var player1;
-
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
 	
 	//Instantiate the Player
-	player1 = new GameObject();
+	player1 = new Player();
 	timer = setInterval(animate, interval);
 
 function animate()
@@ -36,6 +35,7 @@ function animate()
 	{
 		player1.y = canvas.height - player1.height/2
 	}
+	
 
 	//Update the Screen
 	player1.draw();

@@ -59,7 +59,7 @@ function GameObject(x,y,w,h,color)
 	}	
 	
 	//This changes the player's position
-	/*this.move = function()
+	this.move = function()
 	{
 		this.x += this.vx;
 		this.y += this.vy;
@@ -93,6 +93,6 @@ function GameObject(x,y,w,h,color)
 			return true
 		}
 		return false;
-	}*/
+	}
 	
 }

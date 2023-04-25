@@ -6,8 +6,8 @@ function GameObject()
 	this.y = canvas.height/2;
 	
 	//player's dimensions
-	this.width = 100;
-	this.height = 100;
+	this.width = 50;
+	this.height = 50;
 	
 	//player's velocity or speed on each axis
 	this.vx = 0;
@@ -31,9 +31,42 @@ function GameObject()
 	}	
 	
 	//This changes the player's position
-	this.move = function()
+
+    this.move = function()
 	{
 		this.x += this.vx;
 		this.y += this.vy;
 	}
+	
+	this.left = function() 
+	{
+		return this.x - this.width/2;
+	}
+	this.right = function() 
+	{
+		return this.x + this.width/2;
+	}
+	
+	this.top = function() 
+	{
+		return this.y - this.height/2;
+	}
+	this.bottom = function() 
+	{
+		return this.y + this.height/2;
+	}
+	
+	this.hitTestObject = function(obj)
+	{
+		if(this.left() < obj.right() && 
+		   this.right() > obj.left() &&
+		   this.top() < obj.bottom() &&
+		   this.bottom() > obj.top())
+		{
+			return true
+		}
+		return false;
+	}
+
+    
 }
