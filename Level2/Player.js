@@ -1,13 +1,15 @@
 // JavaScript Document
-function Player()
+function GameObject()
 {
+
+	
 	//player's location
-	this.x = 50;
+	this.x = 5;
 	this.y = canvas.height/2;
 	
 	//player's dimensions
-	this.width = 25;
-	this.height = 100;
+	this.width = 10;
+	this.height = 125;
 	
 	//player's velocity or speed on each axis
 	this.vx = 0;
@@ -29,11 +31,4 @@ function Player()
 		context.restore();
 		
 	}	
-	
-	//This changes the player's position
-	this.move = function()
-	{
-		this.x += this.vx;
-		this.y += this.vy;
-	}
 }
