@@ -6,8 +6,8 @@ function GameObject()
 	this.y = canvas.height/2;
 	
 	//player's dimensions
-	this.width = 50;
-	this.height = 50;
+	this.width = 25;
+	this.height = 25;
 	
 	//player's velocity or speed on each axis
 	this.vx = 0;
