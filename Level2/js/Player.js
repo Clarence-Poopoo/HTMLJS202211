@@ -1,12 +1,6 @@
 // JavaScript Document
 function Player()
 {
-
-	this.top
-	this.bottom
-	this.left
-	this.right
-
 	//player's location
 	this.x = 5;
 	this.y = canvas.height/2;
