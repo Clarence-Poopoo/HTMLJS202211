@@ -10,7 +10,8 @@ var player1;
 	context = canvas.getContext("2d");	
 	
 	//Instantiate the Player
-	player1 = new Player();
+	player1 = new Player1();
+	player2 = new Player2();
 	ball = new GameObject();
 	ball.vx = -10
 	ball.vy = 0
@@ -25,6 +26,7 @@ function animate()
 	//Move the Player
 	ball.move();
 	
+	//collision 
 	if(player1.hitTestObject(ball))
 	{
 		if(ball.y == player1.y)
@@ -36,7 +38,26 @@ function animate()
 			ball.vx = -(ball.vx)
 			ball.vy = (ball.vy - 2)
 		}
-		if(ball.y > player1.y)
+		if(ball.y > player1.y )  
+		{
+			ball.vx = -(ball.vx)
+			ball.vy = (ball.vy + 2)
+		}
+		
+	}
+
+	if(player2.hitTestObject(ball))
+	{
+		if(ball.y == player2.y)
+		{
+			ball.vx = -(ball.vx)
+		}
+		if(ball.y < player2.y)
+		{
+			ball.vx = -(ball.vx)
+			ball.vy = (ball.vy - 2)
+		}
+		if(ball.y > player2.y )  
 		{
 			ball.vx = -(ball.vx)
 			ball.vy = (ball.vy + 2)
@@ -47,15 +68,19 @@ function animate()
 	//losing
 	if(ball.x < ball.width/2)
 	{
-		ball.x = (canvas.height/2)
+		ball.x = (canvas.width/2)
+		ball.y = (canvas.height/2)
+		ball.vy = 0;
 	}
 
 	if(ball.x > canvas.width - ball.width/2)
 	{
-		ball.x = canvas.width - ball.width/2
-		ball.vx = -(ball.vx )
+		ball.x = (canvas.width/2)
+		ball.y = (canvas.height/2)
+		ball.vy = 0;
 	}
 
+	//boundary
 	if(ball.y < ball.width/2)
 	{
 		ball.y = ball.width/2
@@ -73,4 +98,5 @@ function animate()
 	//Update the Screen
 	ball.draw();
 	player1.draw();
+	player2.draw();
 }
