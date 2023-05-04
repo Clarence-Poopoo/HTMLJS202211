@@ -5,9 +5,12 @@ var timer;
 var interval = 1000/60;
 var ball;
 var player1;
+var p1Wins = 0;
+var p2Wins = 0;
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
+	ctx = canvas.getContext("2d");	
 	
 	//Instantiate the Player
 	player1 = new Player1();
@@ -18,10 +21,14 @@ var player1;
 	//Set the Animation Timer
 	timer = setInterval(animate, interval);
 
+	
+
 function animate()
 {
 	//Erase the Screen
 	context.clearRect(0,0,canvas.width, canvas.height);	
+	
+	ctx.fillText("You Win!", canvas.width/2,10)
 	
 	//Move the Player
 	ball.move();
@@ -71,6 +78,8 @@ function animate()
 		ball.x = (canvas.width/2)
 		ball.y = (canvas.height/2)
 		ball.vy = 0;
+		p1Wins ++;
+		console.log(p1Wins)
 	}
 
 	if(ball.x > canvas.width - ball.width/2)
@@ -78,6 +87,8 @@ function animate()
 		ball.x = (canvas.width/2)
 		ball.y = (canvas.height/2)
 		ball.vy = 0;
+		p2Wins ++;
+		console.log(p2Wins)
 	}
 
 	//boundary
@@ -99,4 +110,6 @@ function animate()
 	ball.draw();
 	player1.draw();
 	player2.draw();
+	
+	ctx.draw
 }

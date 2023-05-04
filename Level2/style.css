@@ -1,3 +1,9 @@
 canvas{
 	border:1px solid black;
 }
+#container{
+    box-sizing:border-box;
+    width:1018px;
+    border:1px solid black;
+    padding:7px;
+}

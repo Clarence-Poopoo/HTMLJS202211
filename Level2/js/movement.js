@@ -7,7 +7,8 @@ var player1;
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
-	
+	ctx = canvas.getContext("2d");	
+
 	//Instantiate the Player
 	player1 = new Player1();
 	player2 = new Player2();
@@ -15,6 +16,9 @@ var player1;
 
 function animate()
 {
+
+	ctx.fillText("You Win!", canvas.width/2,10) 
+
 	//Erase the Screen
 	context.clearRect(0,0,canvas.width, canvas.height);	
 	if(w)
@@ -72,5 +76,6 @@ function animate()
 	player1.draw();
 	player2.draw();
 	ball.draw();
+	ctx.draw
 }
 
