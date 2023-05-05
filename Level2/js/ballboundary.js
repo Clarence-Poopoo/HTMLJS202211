@@ -7,6 +7,8 @@ var ball;
 var player1;
 var p1Wins = 0;
 var p2Wins = 0;
+var img = document.getElementById("ric");
+
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
@@ -14,7 +16,7 @@ var p2Wins = 0;
 	//Instantiate the Player
 	player1 = new GameObject(5, canvas.height/2, 10, 150, "black");
 	player2 = new GameObject(1019, canvas.height/2, 10, 150, "red");
-	ball = new GameObject(canvas.width/2, canvas.height/2, 25, 25, "purple");
+	ball = new GameObject(canvas.width/2, canvas.height/2, 25, 25,);
 	ball.vx = -10
 	ball.vy = 0
 	//Set the Animation Timer
@@ -119,8 +121,7 @@ function animate()
 
 	
 	//Update the Screen
-	ball.drawCircle();
 	player1.drawRect();
 	player2.drawRect();
-	
+	context.drawImage(img, (ball.x - 20), (ball.y - 25), 40, 40)
 }

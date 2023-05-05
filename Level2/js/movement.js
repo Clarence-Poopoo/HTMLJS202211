@@ -4,6 +4,8 @@ var timer;
 //1000 ms or 1 second / FPS
 var interval = 1000/60;
 var player1;
+var img = document.getElementById("ric");
+
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");		
@@ -32,7 +34,7 @@ function animate()
 	context.lineWidth = 5; 
 	context.stroke();
 	context.restore();
-	
+
 	if(w)
 	{
 		console.log("Moving Up");
@@ -87,6 +89,6 @@ function animate()
 	//Update the Screen
 	player1.drawRect();
 	player2.drawRect();
-	ball.drawCircle();
+	context.drawImage(img, (ball.x - 20), (ball.y - 25), 40, 40)
 }
 
