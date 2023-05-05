@@ -22,6 +22,17 @@ function animate()
 	context.fillText(p2Wins, 540, 40)
 	context.font = "20px Franklin Gothic Medium"
 
+	//Net
+	context.save();
+	context.strokeStyle = "yellow";
+	context.beginPath();
+	context.moveTo(canvas.width/2, 0);
+	context.lineTo(canvas.width/2, canvas.height);
+	context.closePath();
+	context.lineWidth = 5; 
+	context.stroke();
+	context.restore();
+	
 	if(w)
 	{
 		console.log("Moving Up");
