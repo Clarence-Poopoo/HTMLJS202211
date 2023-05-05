@@ -6,21 +6,22 @@ var interval = 1000/60;
 var player1;
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
-	context = canvas.getContext("2d");	
-	ctx = canvas.getContext("2d");	
+	context = canvas.getContext("2d");		
 
 	//Instantiate the Player
-	player1 = new Player1();
-	player2 = new Player2();
+	player1 = new GameObject(5, canvas.height/2, 10, 150, "black");
+	player2 = new GameObject(1019, canvas.height/2, 10, 150, "red");
 	timer = setInterval(animate, interval);
 
 function animate()
 {
-
-	ctx.fillText("You Win!", canvas.width/2,10) 
-
 	//Erase the Screen
 	context.clearRect(0,0,canvas.width, canvas.height);	
+	context.fillText("Player 1 | Player 2", 425,15) 
+	context.fillText(p1Wins, 460, 40)
+	context.fillText(p2Wins, 540, 40)
+	context.font = "20px Franklin Gothic Medium"
+
 	if(w)
 	{
 		console.log("Moving Up");
@@ -73,9 +74,8 @@ function animate()
 	
 
 	//Update the Screen
-	player1.draw();
-	player2.draw();
-	ball.draw();
-	ctx.draw
+	player1.drawRect();
+	player2.drawRect();
+	ball.drawCircle();
 }
 

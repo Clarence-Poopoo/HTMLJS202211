@@ -10,26 +10,27 @@ var p2Wins = 0;
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
-	ctx = canvas.getContext("2d");	
 	
 	//Instantiate the Player
-	player1 = new Player1();
-	player2 = new Player2();
-	ball = new GameObject();
+	player1 = new GameObject(5, canvas.height/2, 10, 150, "black");
+	player2 = new GameObject(1019, canvas.height/2, 10, 150, "red");
+	ball = new GameObject(canvas.width/2, canvas.height/2, 25, 25, "purple");
 	ball.vx = -10
 	ball.vy = 0
 	//Set the Animation Timer
 	timer = setInterval(animate, interval);
-
-	
 
 function animate()
 {
 	//Erase the Screen
 	context.clearRect(0,0,canvas.width, canvas.height);	
 	
-	ctx.fillText("You Win!", canvas.width/2,10)
+	context.fillText("Player 1 | Player 2", 425,15) 
+	context.fillText(p1Wins, 460, 40)
+	context.fillText(p2Wins, 540, 40)
+	context.font = "20px Franklin Gothic Medium"
 	
+
 	//Move the Player
 	ball.move();
 	
@@ -105,11 +106,9 @@ function animate()
 	}
 
 	
-
 	//Update the Screen
-	ball.draw();
-	player1.draw();
-	player2.draw();
+	ball.drawCircle();
+	player1.drawRect();
+	player2.drawRect();
 	
-	ctx.draw
 }
