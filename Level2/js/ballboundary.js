@@ -51,39 +51,41 @@ function animate()
 	//collision 
 	if(player1.hitTestObject(ball))
 	{
-		if(ball.y == player1.y)
+			
+		
+		if(ball.y < player1.y - player1.height/6)
 		{
 			ball.vx = -(ball.vx)
-		}
-		if(ball.y < player1.y)
+			ball.vy = -2
+		}else if(ball.y > player1.y + player2.height/6)  
 		{
 			ball.vx = -(ball.vx)
-			ball.vy = (ball.vy - 2)
-		}
-		if(ball.y > player1.y )  
+			ball.vy = 2
+		}else
 		{
 			ball.vx = -(ball.vx)
-			ball.vy = (ball.vy + 2)
+			ball.vy = 0
 		}
+		
 		
 	}
 
 	if(player2.hitTestObject(ball))
 	{
-		if(ball.y == player2.y)
+		if(ball.y < player2.y - player2.height/6)
 		{
 			ball.vx = -(ball.vx)
-		}
-		if(ball.y < player2.y)
+			ball.vy = -2
+		}else if(ball.y > player2.y + player2.height/6)  
 		{
 			ball.vx = -(ball.vx)
-			ball.vy = (ball.vy - 2)
-		}
-		if(ball.y > player2.y )  
+			ball.vy = 2
+		}else
 		{
 			ball.vx = -(ball.vx)
-			ball.vy = (ball.vy + 2)
+			ball.vy = 0
 		}
+		
 		
 	}
 

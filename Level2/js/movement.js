@@ -4,6 +4,7 @@ var timer;
 //1000 ms or 1 second / FPS
 var interval = 1000/60;
 var player1;
+var player2;
 var img = document.getElementById("ric");
 
 	//Set Up the Canvas
@@ -55,15 +56,6 @@ function animate()
 		player1.y = canvas.height - player1.height/2
 	}
 
-	if(player2.y < player2.height/2)
-	{
-		player2.y = player2.height/2
-	}
-
-	if(player2.y > canvas.height - player2.height/2)
-	{
-		player2.y = canvas.height - player2.height/2
-	}
 
 	if(up)
 	{
@@ -75,14 +67,14 @@ function animate()
 		console.log("Moving Down 2");
 		player2.y += 5;
 	}
-	if(player1.y < player1.height/2)
+	if(player2.y < player2.height/2)
 	{
-		player1.y = player1.height/2
+		player2.y = player2.height/2
 	}
 
-	if(player1.y > canvas.height - player1.height/2)
+	if(player2.y > canvas.height - player2.height/2)
 	{
-		player1.y = canvas.height - player1.height/2
+		player2.y = canvas.height - player2.height/2
 	}
 	
 
