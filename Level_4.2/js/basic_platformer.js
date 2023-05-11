@@ -136,7 +136,7 @@ function animate()
 	platform1.drawRect();
 
 	player.drawRect();
-	player.drawDebug();
+	//player.drawDebug();
 	goal.drawCircle();
 }
 
