@@ -7,9 +7,10 @@ var ball;
 var paddle;
 var score = 0;
 var gravity = 1; 
+var friction = .95;
 var img = document.getElementById("ric");
 
-//paddle.force = 2;
+
 	//Set Up the Canvas
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
@@ -18,7 +19,7 @@ var img = document.getElementById("ric");
 	paddle = new GameObject(canvas.width/2, canvas.height - 50, 250, 40, "cyan");
 	ball = new GameObject(canvas.width/2, canvas.height/2, 80, 80, "magenta");
 	ball.vx = 5
-	ball.vy = 0
+	ball.vy = 35
 	//Set the Animation Timer
 	timer = setInterval(animate, interval);
 
@@ -26,12 +27,6 @@ function animate()
 {
 	//Erase the Screen
 	context.clearRect(0,0,canvas.width, canvas.height);	
-	
-	//Score HUD
-	context.fillText("Score: ", 80,25,) 
-	context.fillStyle = ("dark gray")
-	context.fillText(score, 140, 25)
-	context.font = "16px Arial black"
 	
 	//Move the Player
 	ball.move();
@@ -43,41 +38,29 @@ function animate()
 	context.stroke()
 	
 	ball.vy += gravity;
+	ball.vy *= friction;
 	//collision 
 	if(paddle.hitTestObject(ball))
 	{
 		score ++;
+		ball.y = paddle.y - ball.height;
+		ball.vy = -35;
 		if(ball.x < paddle.x - paddle.width/6)
 		{
-			ball.vy = -5
-			ball.vx = -(ball.vx)
+			ball.vx = -(ball.force)
 		}
 		if(ball.x < paddle.x - paddle.width/3)
 		{
-			ball.vy = -5
-			ball.vx = -(ball.vx * 5)
+			ball.vx = -(ball.force * 5)
 		} 
 		if(ball.x > paddle.x + paddle.width/6)
 		{
-			ball.vy = -5
-			ball.vx = ball.vx
+			ball.vx = ball.force
 		}
 		 if(ball.x > paddle.x + paddle.width/3)
 		{
-			ball.vy = -5
-			ball.vx = ball.vx * 5
+			ball.vx = ball.force * 5
 		}
-		
-
-
-		
-	}
-
-	//Losing
-	if(ball.y > canvas.height - ball.width/2)
-	{
-		score = 0
-		ball.vy = ball.vy * .67
 	}
 
 	//boundary
@@ -89,8 +72,9 @@ function animate()
 
 	if(ball.y > canvas.height - ball.width/2)
 	{
+		score = 0
 		ball.y = canvas.height - ball.width/2
-		ball.vy = -(ball.vy)
+		ball.vy = -ball.vy * .67
 	}
 	if(ball.x < ball.width/2)
 	{
@@ -109,15 +93,15 @@ function animate()
 	
     if(a)
 	{
-		console.log("Moving left");
-		paddle.x += -15
+		paddle.vx += paddle.ax * -paddle.force;
 		
 	}
 	if(d)
 	{
-		paddle.x += 15
-		console.log("Moving right");
+		paddle.vx += paddle.ax * paddle.force;
 	}
+	paddle.x += paddle.vx;
+	paddle.vx *= friction;
 
 	if(paddle.x < paddle.width/2)
 	{
@@ -128,6 +112,12 @@ function animate()
 	{
 		paddle.x = canvas.width - paddle.width/2
 	}
+
+	//Score HUD
+	context.fillText("Score: ", 80,25,) 
+	context.fillStyle = ("dark gray")
+	context.fillText(score, 140, 25)
+	context.font = "16px Arial black"
 	
 	//Update the Screen
 	paddle.drawRect();

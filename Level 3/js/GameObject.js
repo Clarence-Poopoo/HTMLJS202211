@@ -27,7 +27,10 @@ function GameObject(x,y,w,h,color)
 		this.color = color;
 	//This draws the ball to the screen
 	
-
+	this.force = 2;
+	this.ax = 1;
+	this.vx = 0;
+	
 	this.drawCircle = function()
 	{
 		context.save();
