@@ -52,7 +52,6 @@ function animate()
 	if(player1.hitTestObject(ball))
 	{
 			
-		
 		if(ball.y < player1.y - player1.height/6)
 		{
 			ball.vx = -(ball.vx)
