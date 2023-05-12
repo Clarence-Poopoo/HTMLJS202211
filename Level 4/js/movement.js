@@ -8,7 +8,12 @@ var player;
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
 
-	player = new GameObject({x:150});
+	player = new GameObject(canvas.width/2, canvas.height/2, 40, 40, "red");
+	player2 = new GameObject(canvas.width - 50, canvas.height/2, 40, 40, "green");
+	health = new GameObject(180, 50, 300, 10, "green");
+	backHealth = new GameObject(180, 50, 300, 10, "black");
+	
+	
 
 	var fX = .95;
 	var fY = .95;
@@ -24,7 +29,7 @@ function animate()
 	if(w)
 	{
 		
-		player.vy += -player.ay * player.force;
+		player.vy += player.ay * -player.force;
 	}
 	if(s)
 	{
@@ -32,12 +37,37 @@ function animate()
 	}
 	if(a)
 	{
-		player.vx += -player.ax * player.force;
+		player.vx += player.ax * -player.force;
 	}
 	if(d)
 	{
 		player.vx += player.ax * player.force;
 	}
+
+	if(player.hitTestObject(player2))
+	{
+		health.x -= .5;
+		health.width --;
+		if(health.width <= 0)
+		{
+			health.width = 0;
+		}
+	}
+
+	if(health.width == 0)
+	{
+		context.fillStyle = "red"
+        context.font = "25px Roboto"
+        context.textAlign = 'center'
+        context.fillText("You Ran Out Of Health", canvas.width/2,canvas.height/2)
+
+		if(w || s || a || d)
+	{
+		player.vy = 0
+		player.vx = 0
+	}
+	}
+
 
 	if(player.x < player.width/2)
 	{
@@ -64,5 +94,16 @@ function animate()
 	player.x += player.vx;
 	player.y += player.vy;
 
+
+	context.fillStyle = "Black"
+	context.font = "25px Roboto"
+	context.textAlign = 'center'
+	context.fillText("Health", 80,40)
+
+
 	player.drawRect();
+	player2.drawRect();
+	backHealth.drawRect()
+	health.drawRect();
+	
 }

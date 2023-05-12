@@ -1,10 +1,30 @@
-function GameObject(obj)
+function GameObject(x,y,w,h,color)
 {	
-		this.x = canvas.width/2;
-		this.y = canvas.height/2;
-		this.width = 100;
-		this.height = 100;
-		this.color = "#ff0000";
+		//Default Values
+	if(x == undefined)
+	this.x = canvas.width/2;
+else 
+	this.x = x;
+if(y == undefined)
+	this.y = canvas.height/2;
+else 
+	this.y = y;
+
+if(w == undefined)
+	this.width = 100;
+else 
+	this.width = w;
+if(h == undefined)
+	this.height = 100;
+else 
+	this.height = h;
+
+	//player's color
+if(color == undefined)
+	this.color = "#ff0000";
+else 
+	this.color = color;
+	
 		this.force = 2;
 		this.ax = 1;
 		this.ay = 1;
@@ -12,7 +32,6 @@ function GameObject(obj)
 		this.vy = 0;
 
 
-		
 	this.drawRect = function()
 	{
 		context.save();
