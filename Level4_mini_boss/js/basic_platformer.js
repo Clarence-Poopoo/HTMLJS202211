@@ -47,7 +47,7 @@ var player;
 		platform5.height = 300;
 		platform5.x = platform1.width/2 + 800
 		platform5.y = 100
-		platform5.color = "#66ff33";
+		platform5.color = "orange";
 		
 	goal = new GameObject({width:24, height:50, x:canvas.width-50, y:100, color:"#00ffff"});
 	key = new GameObject({width:24, height:50, x:canvas.width-50, y:400, color:"orange"});
