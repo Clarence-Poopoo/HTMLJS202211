@@ -1,6 +1,6 @@
 function GameObject(x,y,w,h,color)
 {	
-		//Default Values
+		
 	if(x == undefined)
 	this.x = canvas.width/2;
 else 
@@ -19,7 +19,6 @@ if(h == undefined)
 else 
 	this.height = h;
 
-	//player's color
 if(color == undefined)
 	this.color = "#ff0000";
 else 
@@ -49,7 +48,6 @@ else
 	}
 	
 	
-	//---------Returns object's for the top, bottom, left and right of an object's bounding box.
 	this.left = function() 
 	{
 		return {x:this.x - this.width/2 , y:this.y}
@@ -80,7 +78,6 @@ else
 		return false;
 	}
 		
-	//------Tests whether a single point overlaps the bounding box of another object-------
 	this.hitTestPoint = function(obj)
 	{
 		if(obj.x >= this.left().x && 
