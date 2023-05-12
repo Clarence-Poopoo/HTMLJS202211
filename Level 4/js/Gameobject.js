@@ -25,7 +25,7 @@ if(color == undefined)
 else 
 	this.color = color;
 	
-		this.force = 2;
+		this.force = 2.5;
 		this.ax = 1;
 		this.ay = 1;
 		this.vx = 0;
@@ -38,19 +38,6 @@ else
 			context.fillStyle = this.color;
 			context.translate(this.x, this.y);
 			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
-		context.restore();
-		
-	}	
-	
-	this.drawCircle = function()
-	{
-		context.save();
-			context.fillStyle = this.color;
-			context.beginPath();
-			context.translate(this.x, this.y);
-			context.arc(0, 0, this.radius(), 0, 360 *Math.PI/180, true);
-			context.closePath();
-			context.fill();
 		context.restore();
 		
 	}	
@@ -106,23 +93,5 @@ else
 		return false;
 	}
 	
-	/*-----Sets or gets the radius value--------*/
-	this.radius = function(newRadius)
-	{
-			return this.width/2; 
-	}
-	
-	//Draws the collision points
-	this.drawDebug = function()
-	{
-		var size = 5;
-		context.save();
-		context.fillStyle = "black";
-		context.fillRect(this.left().x-size/2, this.left().y-size/2, size, size);
-		context.fillRect(this.right().x-size/2, this.right().y-size/2, size, size);
-		context.fillRect(this.top().x-size/2, this.top().y-size/2, size, size);
-		context.fillRect(this.bottom().x-size/2, this.bottom().y-size/2, size, size);
-		context.fillRect(this.x-size/2, this.y-size/2, size, size);
-		context.restore();
-	}
+
 }

@@ -9,14 +9,14 @@ var player;
 	context = canvas.getContext("2d");	
 
 	player = new GameObject(canvas.width/2, canvas.height/2, 40, 40, "red");
-	player2 = new GameObject(canvas.width - 50, canvas.height/2, 40, 40, "green");
+	enemy = new GameObject(canvas.width - 50, canvas.height/2, 40, 40, "green");
 	health = new GameObject(180, 50, 300, 10, "green");
 	backHealth = new GameObject(180, 50, 300, 10, "black");
 	
 	
 
-	var fX = .95;
-	var fY = .95;
+	var fX = .80;
+	var fY = .80;
 
 	interval = 1000/60;
 	timer = setInterval(animate, interval);
@@ -44,7 +44,7 @@ function animate()
 		player.vx += player.ax * player.force;
 	}
 
-	if(player.hitTestObject(player2))
+	if(player.hitTestObject(enemy))
 	{
 		health.x -= .5;
 		health.width --;
@@ -95,14 +95,12 @@ function animate()
 	player.y += player.vy;
 
 
-	context.fillStyle = "Black"
-	context.font = "25px Roboto"
-	context.textAlign = 'center'
-	context.fillText("Health", 80,40)
+	
 
 
+	
 	player.drawRect();
-	player2.drawRect();
+	enemy.drawRect();
 	backHealth.drawRect()
 	health.drawRect();
 	
