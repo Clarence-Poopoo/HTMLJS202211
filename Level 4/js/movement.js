@@ -14,6 +14,10 @@ health = new GameObject(180, 50, 300, 10, "green");
 backHealth = new GameObject(180, 50, 300, 10, "black");
 
 var friction = .80;
+var canMove = true;
+var timer = 0;
+var delay = 100;
+var canMove = true;
 
 interval = 1000 / 60;
 timer = setInterval(animate, interval);
@@ -42,6 +46,32 @@ function animate() {
 		if (health.width <= 0) {
 			health.width = 0;
 		}
+	}
+
+
+	timer--;
+	if(timer <=0)
+	{
+		canMove=true
+	}
+	else
+	{
+		canMove=false;
+	}
+
+	
+	if(shift)
+	{
+		if(canMove)
+		{
+			timer = delay;
+			player.force = 10;
+		}
+	}
+	else
+	{
+		timer=0
+		player.force = 2
 	}
 
 	if (health.width == 0) {
