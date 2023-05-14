@@ -9,7 +9,6 @@ document.addEventListener("keyup", release);
 
 function press(e)
 {
-	console.log(e.keyCode);
 	
 	if(e.keyCode == 87)
 	{

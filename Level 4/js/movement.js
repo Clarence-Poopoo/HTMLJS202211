@@ -17,7 +17,7 @@ var friction = .80;
 var canMove = true;
 var timer = 0;
 var delay = 100;
-var canMove = true;
+
 
 interval = 1000 / 60;
 timer = setInterval(animate, interval);
@@ -48,6 +48,7 @@ function animate() {
 		}
 	}
 
+	console.log(timer)
 
 	timer--;
 	if(timer <=0)
@@ -65,12 +66,12 @@ function animate() {
 		if(canMove)
 		{
 			timer = delay;
-			player.force = 10;
+			player.force = 5;
 		}
 	}
 	else
 	{
-		timer=0
+		timer = 0;
 		player.force = 2
 	}
 
@@ -85,6 +86,24 @@ function animate() {
 			player.vx = 0
 		}
 	}
+
+	if(enemy.hitTestPoint(player.bottom()))
+	{
+		player.vy = -(player.vy * 5)
+	}
+	if(enemy.hitTestPoint(player.left()))
+	{
+		player.vx = -(player.vx * 5)
+	}
+	if(enemy.hitTestPoint(player.right()))
+	{
+		player.vx = -(player.vx * 5)
+	}
+	if(enemy.hitTestPoint(player.top()))
+	{
+		player.vy = -(player.vy * 5)
+	}
+	
 
 
 	if (player.x < player.width / 2) {
