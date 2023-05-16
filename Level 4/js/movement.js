@@ -14,13 +14,17 @@ health = new GameObject(180, 50, 300, 10, "green");
 backHealth = new GameObject(180, 50, 300, 10, "black");
 
 var friction = .80;
-var canMove = true;
-var timer = 0;
+var canDash = true;
+var dashTimer;
 var delay = 100;
 
 
 interval = 1000 / 60;
 timer = setInterval(animate, interval);
+
+function dashStop() {
+	canDash = true;
+}
 
 function animate() {
 
@@ -48,29 +52,18 @@ function animate() {
 		}
 	}
 
-	console.log(timer)
 
-	timer--;
-	if(timer <=0)
-	{
-		canMove=true
-	}
-	else
-	{
-		canMove=false;
-	}
 
-	
-	if(shift)
-	{
-		if(canMove)
-		{
-			timer = delay;
-			player.force = 5;
+	if (canDash) {
+		if (shift) {
+			player.force = 20;
+			clearTimeout(dashStop);
+			dashTimer = setTimeout(dashStop, 2000);
+			canDash = false;
 		}
 	}
-	else
-	{
+
+	else {
 		timer = 0;
 		player.force = 2
 	}
@@ -87,23 +80,19 @@ function animate() {
 		}
 	}
 
-	if(enemy.hitTestPoint(player.bottom()))
-	{
+	if (enemy.hitTestPoint(player.bottom())) {
 		player.vy = -(player.vy * 5)
 	}
-	if(enemy.hitTestPoint(player.left()))
-	{
+	if (enemy.hitTestPoint(player.left())) {
 		player.vx = -(player.vx * 5)
 	}
-	if(enemy.hitTestPoint(player.right()))
-	{
+	if (enemy.hitTestPoint(player.right())) {
 		player.vx = -(player.vx * 5)
 	}
-	if(enemy.hitTestPoint(player.top()))
-	{
+	if (enemy.hitTestPoint(player.top())) {
 		player.vy = -(player.vy * 5)
 	}
-	
+
 
 
 	if (player.x < player.width / 2) {
