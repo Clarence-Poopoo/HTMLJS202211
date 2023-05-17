@@ -100,7 +100,7 @@ function angularMovement() {
 	}
 	if(dist <= 2)
 	{
-		pearl.x = 1000;
+		pearl.x = 10000;
 	}
 	Math.round(dist);
 		//apply physics to velocity
