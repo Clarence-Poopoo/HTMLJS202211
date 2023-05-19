@@ -3,7 +3,7 @@ var a = false;
 var s = false;
 var d = false;
 var shift = false;
-
+var t = false;
 document.addEventListener("keydown", press);
 document.addEventListener("keyup", release);
 
@@ -30,6 +30,10 @@ function press(e)
 	{
 		shift = true;
 	}
+	if(e.keyCode == 84)
+	{
+		shift = true;
+	}
 }
 
 function release(e)
@@ -52,6 +56,10 @@ function release(e)
 		d = false;
 	}
 	if(e.keyCode == 16)
+	{
+		shift = false;
+	}
+	if(e.keyCode == 84)
 	{
 		shift = false;
 	}

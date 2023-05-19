@@ -12,6 +12,9 @@ player = new GameObject(canvas.width / 2, canvas.height / 2, 40, 40, "red");
 enemy = new GameObject(canvas.width - 50, canvas.height / 2, 40, 40, "green");
 health = new GameObject(180, 50, 300, 10, "green");
 backHealth = new GameObject(180, 50, 300, 10, "black");
+var bullet = [];
+var i = 0
+
 
 var friction = .80;
 var canDash = true;
@@ -51,12 +54,16 @@ function animate() {
 			health.width = 0;
 		}
 	}
-
+	//var dx = player.x - enemy.x;
+	//var dy = player.y - enemy.y;
+	
+	//enemy.x += dx/100;
+	//enemy.y += dy/100;
 
 
 	if (canDash) {
 		if (shift) {
-			player.force = 20;
+			player.force = 50;
 			clearTimeout(dashStop);
 			dashTimer = setTimeout(dashStop, 2000);
 			canDash = false;
@@ -116,11 +123,15 @@ function animate() {
 	player.x += player.vx;
 	player.y += player.vy;
 
-
+if(t) {
+	i++;
+	bullet[i] = new GameObject({x:canvas.width/2 , y:canvas.height/2});
+}
 
 	enemy.drawRect();
 	player.drawRect();
 	backHealth.drawRect()
 	health.drawRect();
+	bullet.drarCirlce();
 
 }
