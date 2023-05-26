@@ -7,15 +7,30 @@ var player;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+canvas.addEventListener("mousemove", track);
+canvas.addEventListener("click", bullet);
+
 
 player = new GameObject(canvas.width / 2, canvas.height / 2, 40, 40, "red");
 enemy = new GameObject(canvas.width - 50, canvas.height / 2, 40, 40, "green");
 health = new GameObject(180, 50, 300, 10, "green");
 backHealth = new GameObject(180, 50, 300, 10, "black");
-var bullet = [];
-var i = 0
+var bullet = new GameObject(1000, 1000,);
 
+var eHealth = 100;
 
+var mouse = { x: 0, y: 0 };
+var angle = 0;
+
+function track(e) {
+	var rect = canvas.getBoundingClientRect();
+	mouse.x = e.clientX - rect.left;
+	mouse.y = e.clientY - rect.top;
+
+}
+function bullet() {
+	bullet = new GameObject(player.x, player.y, 20, 20, "red");
+}
 var friction = .80;
 var canDash = true;
 var dashTimer;
@@ -28,6 +43,7 @@ timer = setInterval(animate, interval);
 function dashStop() {
 	canDash = true;
 }
+
 
 function animate() {
 
@@ -56,7 +72,7 @@ function animate() {
 	}
 	//var dx = player.x - enemy.x;
 	//var dy = player.y - enemy.y;
-	
+
 	//enemy.x += dx/100;
 	//enemy.y += dy/100;
 
@@ -101,6 +117,24 @@ function animate() {
 	}
 
 
+	if (enemy.hitTestPoint(bullet)) {
+		eHealth -= 10;
+		console.log(eHealth)
+		{
+			if(eHealth <=0)
+			{
+				enemy.x = 100000
+			}
+
+		}
+	}
+
+	bullet.move();
+	if(bullet.x == player.x && bullet.y == player.y)
+	{
+		bullet.vx = Math.cos(player.angle * Math.PI/180) * 20;
+		bullet.vy = Math.sin(player.angle * Math.PI/180) * 20;
+	}
 
 	if (player.x < player.width / 2) {
 		player.x = player.width / 2
@@ -117,21 +151,22 @@ function animate() {
 		player.y = canvas.height - player.height / 2
 	}
 
+	var dx = mouse.x - player.x;
+	var dy = mouse.y - player.y;
+	var radians = Math.atan2(dy, dx);
+	player.angle = radians * 180 / Math.PI;
+
+	
 	player.vx *= friction;
 	player.vy *= friction;
 
 	player.x += player.vx;
 	player.y += player.vy;
 
-if(t) {
-	i++;
-	bullet[i] = new GameObject({x:canvas.width/2 , y:canvas.height/2});
-}
-
+	bullet.drawCircle();
 	enemy.drawRect();
 	player.drawRect();
 	backHealth.drawRect()
 	health.drawRect();
-	bullet.drarCirlce();
 
 }

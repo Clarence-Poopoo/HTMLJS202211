@@ -32,7 +32,7 @@ function press(e)
 	}
 	if(e.keyCode == 84)
 	{
-		shift = true;
+		t = true;
 	}
 }
 
@@ -61,6 +61,6 @@ function release(e)
 	}
 	if(e.keyCode == 84)
 	{
-		shift = false;
+		t = false;
 	}
 }

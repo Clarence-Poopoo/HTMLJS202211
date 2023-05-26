@@ -23,6 +23,8 @@ if(color == undefined)
 	this.color = "#ff0000";
 else 
 	this.color = color;
+
+	this.angle = 0;
 	
 		this.force = 2.5;
 		this.ax = 1;
@@ -36,6 +38,7 @@ else
 		context.save();
 			context.fillStyle = this.color;
 			context.translate(this.x, this.y);
+			context.rotate(this.angle * Math.PI/180);
 			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 		context.restore();
 		
